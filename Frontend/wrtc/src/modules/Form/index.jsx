@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import Button from "../../components/Button"
 import Input from "../../components/input"
 
@@ -16,8 +17,15 @@ import Input from "../../components/input"
 //     console.log('data =',data)
 
 const Form = () => {
+  const location = useLocation(); 
   const [isSignInPage, setIsSignInPage] = useState(true)
 
+  useEffect(() => {
+    if (location.state?.isSignIn !== undefined) {
+      setIsSignInPage(location.state.isSignIn)
+    }
+  }, [location])
+ 
   const [data, setData] = useState({
     fullName: "",
     email: "",
@@ -29,12 +37,13 @@ const Form = () => {
       fullName: "",
       email: "",
       password: "",
-    }) } 
+    }) }  
   return (
-    <div className="bg-white w-150 h-160 shadow-lg rounded-lg text-black flex flex-col justify-center items-center px-10">
+    <div className="dark:bg-[#111111] w-screen h-screen justify-center items-center flex ">
+    <div className="bg-white   w-150 h-160 shadow-lg rounded-lg flex flex-col dark:text-[#ffffff] dark:bg-[#201f20] justify-center items-center px-10">
       <div className="text-6xl font-bold tracking-tight font-brand">
-        <span className="text-indigo-400">Sup</span>
-        <span className="text-indigo-900">Chat</span>
+        <span className="bg-linear-to-r from-[#58cfd7] to-[#A415D4] bg-clip-text text-transparent">SupChat</span>
+        {/* <span className="text-[#A415D4]">Chat</span> */}
       </div>
       <div className="text-xl font-light mt-2 mb-14">
         {isSignInPage ? "Sign in to continue" : "Sign up now to get started"}
@@ -91,5 +100,6 @@ const Form = () => {
           {isSignInPage ? "Sign up" : "Sign in"}
         </button>
       </div>
+    </div>
     </div> )}
 export default Form
