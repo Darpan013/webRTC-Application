@@ -33,6 +33,7 @@ const Form = ({
         if(resData.token){
           localStorage.setItem('user:token', resData.token)
           localStorage.setItem('user:detail', JSON.stringify(resData.user))
+            alert('Account Created')
           
           navigate('/dashboard')
         }
