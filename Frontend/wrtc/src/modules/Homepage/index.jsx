@@ -44,7 +44,7 @@ const Homepage = () => {
     }
   }, [darkMode]);
   return (
-    <div className="h-screen w-screen ">
+    <div className="h-screen w-full ">
     <div className="bg-white dark:bg-[#201f20] text-black dark:text-white  transition-colors duration-300 ">
       {/* ================= HEADER ================= */}
       <div className="w-full border-b border-gray-200 dark:border-gray-700">
