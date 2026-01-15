@@ -242,21 +242,20 @@ const Dashboard = () => {
                                                                                    {/* Active Contact Details and Call Button */}
                                                                                    
         <div
-            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%] h-screen
+            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%]
                 ${isMobile && !messages?.receiver?.fullName ? 'hidden' : 'block'}
             `}
         >
         <div style={{backgroundImage: `url(${landscapebg})`,backgroundBlendMode: 'overlay',
                     backgroundSize:'cover',
                     backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundAttachment: 'fixed'
-         }} className=" dark:bg-[#252525cc]   flex-1  min-w-0  flex flex-col items-center relative ">
+                    backgroundRepeat: 'no-repeat'
+         }} className=" dark:bg-[#252525cc] h-screen lg:h-screen md:h-screen flex-1  min-w-0  flex flex-col items-center relative ">
 
             {
                 messages?.receiver?.fullName &&
                 
-                <div className='w-[95%] md:w-[90%] lg:w-[85%] flex items-center gap-3 mt-4 md:mt-7 '>
+                <div className='w-[95%] md:w-[90%] lg:w-[85%] flex items-center gap-3 mt-4 md:mt-7'>
                     
                     <div className='bg-[#dedede] dark:bg-[#282828] border-2 border-[#b3b3b3] dark:border-[#777777] flex-1 h-14 sm:h-16 md:h-20 rounded-full flex items-center px-3 sm:px-4 md:px-6 lg:px-12 shadow-2xl gap-2 sm:gap-3 overflow-hidden'>
                         <div className='cursor-pointer rounded-full bg-linear-to-r from-[#A415D4] to-[#1ADEEB] p-0.5 shrink-0'>
@@ -287,7 +286,7 @@ const Dashboard = () => {
         {
         messages?.receiver?.fullName ? (
             <>                                                                    {/* Active Chat box */}
-            <div className='mask-t-from-98% w-full overflow-y-auto flex-1' style={{ minHeight: 0 }}>
+            <div className='mask-t-from-98% w-full overflow-y-auto h-full  '>
                     
                     
                 {
