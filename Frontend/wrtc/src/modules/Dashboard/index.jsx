@@ -242,7 +242,7 @@ const Dashboard = () => {
                                                                                    {/* Active Contact Details and Call Button */}
                                                                                    
         <div
-            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%]  min-h-screen md:h-screen
+            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%]
                 ${isMobile && !messages?.receiver?.fullName ? 'hidden' : 'block'}
             `}
         >
