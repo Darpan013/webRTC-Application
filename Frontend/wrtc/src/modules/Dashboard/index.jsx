@@ -329,7 +329,7 @@ const Dashboard = () => {
         {isThemeOpen&& (
             <>
                 <div 
-                        className='absolute inset-0   z-70 '
+                        className='absolute inset-0   z-60 '
                         onClick={()=> {setThemeOpen(false), setisSettingsOpen(false)}}
                     />
                 <div className={`
@@ -396,8 +396,6 @@ const Dashboard = () => {
         </div>
         {iskeyhightlightopen&& (
             <>
-                 <>
-                    
                     <div 
                         className='absolute inset-0  bg-opacity-1 z-60 backdrop-blur-sm'
                         onClick={()=> setKeyhighlight(false)}
@@ -458,7 +456,6 @@ const Dashboard = () => {
 
                         
                     </div>
-                </>
             </>
         )}
                                                 {/* app intro box */}
