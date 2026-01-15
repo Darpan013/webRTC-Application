@@ -9,14 +9,14 @@ import { io } from "socket.io-client"
 
 
 const Dashboard = () => {
-    const [isThemeOpen, setThemeOpen] =useState()
+    const [isThemeOpen, setThemeOpen] =useState(false)
     const [isSettingsOpen, setisSettingsOpen] = useState(false);
     const [isAppintroOpen, setisAppintroOpen] = useState(false);
     const [iskeyhightlightopen, setKeyhighlight]= useState(false)
     const [animateSettings, setAnimateSettings] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [darkMode, setDarkMode] = useState();
+    const [darkMode, setDarkMode] = useState(false);
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
