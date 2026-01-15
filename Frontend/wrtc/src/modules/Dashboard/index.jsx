@@ -255,7 +255,7 @@ const Dashboard = () => {
             {
                 messages?.receiver?.fullName &&
                 
-                <div className='w-[95%] md:w-[90%] lg:w-[85%] flex items-center gap-3 mt-4 md:mt-7'>
+                <div className='w-[95%] md:w-[90%] lg:w-[85%] flex items-center gap-3 mt-4 md:mt-7 '>
                     
                     <div className='bg-[#dedede] dark:bg-[#282828] border-2 border-[#b3b3b3] dark:border-[#777777] flex-1 h-14 sm:h-16 md:h-20 rounded-full flex items-center px-3 sm:px-4 md:px-6 lg:px-12 shadow-2xl gap-2 sm:gap-3 overflow-hidden'>
                         <div className='cursor-pointer rounded-full bg-linear-to-r from-[#A415D4] to-[#1ADEEB] p-0.5 shrink-0'>
