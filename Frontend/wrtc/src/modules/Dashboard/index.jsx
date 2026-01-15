@@ -242,15 +242,16 @@ const Dashboard = () => {
                                                                                    {/* Active Contact Details and Call Button */}
                                                                                    
         <div
-            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%] h-fit
+            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%] h-screen
                 ${isMobile && !messages?.receiver?.fullName ? 'hidden' : 'block'}
             `}
         >
         <div style={{backgroundImage: `url(${landscapebg})`,backgroundBlendMode: 'overlay',
                     backgroundSize:'cover',
                     backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-         }} className=" dark:bg-[#252525cc] h-screen lg:h-screen md:h-screen flex-1  min-w-0  flex flex-col items-center relative ">
+                    backgroundRepeat: 'no-repeat',
+                    backgroundAttachment: 'fixed'
+         }} className=" dark:bg-[#252525cc]   flex-1  min-w-0  flex flex-col items-center relative ">
 
             {
                 messages?.receiver?.fullName &&
@@ -286,7 +287,7 @@ const Dashboard = () => {
         {
         messages?.receiver?.fullName ? (
             <>                                                                    {/* Active Chat box */}
-            <div className='mask-t-from-98% w-full overflow-y-auto h-full  '>
+            <div className='mask-t-from-98% w-full overflow-y-auto flex-1' style={{ minHeight: 0 }}>
                     
                     
                 {
