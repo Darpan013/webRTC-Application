@@ -21,12 +21,30 @@ const Dashboard = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
 
+    const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+
+
+
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            // Update viewport height for mobile browsers
+            setViewportHeight(window.innerHeight);
+        };
+        
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
+        
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('orientationchange', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -89,20 +107,6 @@ const Dashboard = () => {
             }) )
         })
     }, [socket])
-
-    useEffect(() => {
-        if (isMobile && messages?.receiver?.fullName) {
-            console.log('receiver is :>>',isMobile, messages?.receiver?.fullName);
-            
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [isMobile, messages?.receiver?.fullName]);
 
 
     useEffect(()=>{
@@ -184,10 +188,12 @@ const Dashboard = () => {
     
     
   return (                                                                    
-    <div className=" w-full  flex flex-col md:flex-row h-screen  ">      {/* Full Display div */}
+    <div className="w-full flex flex-col md:flex-row md:h-screen overflow-hidden" 
+    style={{ height: isMobile ? `${viewportHeight}px` : '100vh' }}>      {/* Full Display div */}
 
-        <div  className={` bg-contain w-full md:w-[32%] lg:w-[27%]  min-h-screen md:h-screen  flex flex-col
-         dark:bg-[#282828]  bg-[#dedede] ${isMobile && messages?.receiver?.fullName ? 'hidden' : 'block'} `}>  {/* Left side full sized box div */}
+        <div  className={`bg-contain w-full md:w-[32%] lg:w-[27%] md:h-screen flex flex-col
+         dark:bg-[#282828] bg-[#dedede] ${isMobile && messages?.receiver?.fullName ? 'hidden' : 'flex'}`}
+        style={{ height: isMobile ? `${viewportHeight}px` : 'auto' }} >  {/* Left side full sized box div */}
             <div className=" flex mx-4 items-center justify-between my-6 ">      {/* Account Setting & Webrtc app logo, Top div */}
 
                 <div  className='w-18 h-18 md:w-14 md:h-14 lg:w-20 lg:h-20 hover:drop-shadow-[0_0_2px_rgba(160,0,247,0.2)] lg:mt-0 mt-2  rounded-lg transition-transform '><img src={Avatars} alt="User profile avatar for Tutorial Dev account"/>
@@ -242,15 +248,17 @@ const Dashboard = () => {
                                                                                    {/* Active Contact Details and Call Button */}
                                                                                    
         <div
-            className={`dark:bg-[#242424] bg-[#e1e1e1] flex-1 w-full md:w-[70%] lg:w-[75%] min-h-screen h-screen
-                ${isMobile && !messages?.receiver?.fullName ? 'hidden' : 'block'}
-            `}
+            className={`dark:bg-[#242424] bg-[#e1e1e1]
+            md:h-screen flex-1 w-full md:w-[70%] lg:w-[75%] 
+            ${isMobile && !messages?.receiver?.fullName ? 'hidden' : 'flex'}
+        `}
+        style={{ height: isMobile ? `${viewportHeight}px` : 'auto' }}
         >
         <div style={{backgroundImage: `url(${landscapebg})`,backgroundBlendMode: 'overlay',
                     backgroundSize:'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat'
-         }} className=" dark:bg-[#252525cc] h-screen lg:h-screen md:h-screen flex-1  min-w-0  flex flex-col items-center relative ">
+         }} className=" dark:bg-[#252525cc] min-h-0 w-full lg:h-screen md:h-screen flex-1  min-w-0  flex flex-col items-center  ">
 
             {
                 messages?.receiver?.fullName &&
@@ -326,6 +334,7 @@ const Dashboard = () => {
         ) : <div className='text-center  w-auto mx-auto text-[#02aea0] text-lg font-semibold mt-10 rounded-2xl dark:bg-[#282828] bg-[#dedede]'>Choose a conversation to begin 🚀</div>
         }
         </div>
+        </div>
         {isThemeOpen&& (
             <>
                 <div 
@@ -393,7 +402,6 @@ const Dashboard = () => {
                     </div>
                 </>
         )}
-        </div>
         {iskeyhightlightopen&& (
             <>
                     <div 
